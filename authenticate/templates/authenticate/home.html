@@ -1,0 +1,33 @@
+{% extends "authenticate/basic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% for message in messages %}
+    <div class="alert alert-dark" role="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tittle</th>
+        <th scope="col">Task</th>
+        <th scope="col">Progress</th>
+        <th scope="col">View/update</th>
+        <th scope="col">Delete Task</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for value in form %}
+      <tr>
+        <th scope="row">{{value.id}}</th>
+        <td>{{value.Tittle}}</td>
+        <td>{{value.to_do_list}}</td>
+        <td>{{value.completed}}</td>
+        <td><a href="update/{{value.id}}">View/Update</a></td>
+        <td><a href="delete/{{value.id}}">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

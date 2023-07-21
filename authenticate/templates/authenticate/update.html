@@ -1,0 +1,25 @@
+{% extends 'authenticate/basic.html' %}
+{% block content %}
+<form action=" " method="POST"  enctype="multipart/form-data">
+{% csrf_token %}
+<div class="mb-3">
+{% for value in form %}
+<label for="exampleFormControlTextarea1" class="form-label">Task</label>
+<div class="input-group">
+    <textarea name="Task" class="form-control" aria-label="With textarea">{{value.Tittle}}</textarea>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+    <textarea name="Description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{value.to_do_list}} </textarea>
+</div>
+    {% endfor %}
+<label for="cars">Choose Your Progress</label>
+<select id="cars" name="Progress">
+  <option value="Completed">Completed</option>
+  <option value="NotCompleted">In Progress</option>
+  <option value="InProgress">Not Completed</option>
+</select>
+<br>
+<input class="btn btn-primary" type="submit" value="Submit">
+</form>
+{% endblock %}
